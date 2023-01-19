@@ -1,0 +1,32 @@
+[
+  {
+    "id": 1,
+    "login": "MegaWat",
+    "password": 1234,
+    "cars": [
+      {
+        "title": "Bugatti",
+        "price": 2000000
+      },
+      {
+        "title": "Ferrari",
+        "price": 150000
+      }
+    ]
+  },
+  {
+    "id": 2,
+    "login": "MyWay",
+    "password": 4567,
+    "cars": [
+      {
+        "title": "BMW",
+        "price": 700000
+      },
+      {
+        "title": "Merc",
+        "price": 500000
+      }
+    ]
+  }
+]
