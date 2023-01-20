@@ -13,25 +13,22 @@
   align-items: center;
 }
 
-.left {
-  border: 1px solid black;
-  width: 40%;
-  height: 70%;
-
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding-top: 50px;
-  padding-left: 30px;
-}
-
-.login {
+.login-form {
   display: flex;
   flex-direction: column;
   justify-content: space-around;
   height: 60%;
   width: 100%;
   padding-left: 15px;
+}
+
+.create-contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.login {
 }
 
 input {
