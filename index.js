@@ -62,6 +62,7 @@ async function getLoginAccess(obj) {
   });
 
   if (!response.ok) {
+    alert("auth error");
     hideTable();
   } else {
     renderContacts();
@@ -102,7 +103,12 @@ function hideTable() {
   table.style.visibility = "hidden";
 }
 
+function emptyTable() {
+  document.querySelector("table").innerHTML = "";
+}
+
 async function renderContacts() {
+  emptyTable();
   table.style.visibility = "visible";
   let response = await fetch("/contacts", {
     method: "GET",
