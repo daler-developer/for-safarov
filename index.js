@@ -1,5 +1,6 @@
 const loginBtn = document.querySelector(".login-form button");
 const createContactBtn = document.querySelector(".create-contact-form button");
+const table = document.querySelector("table");
 
 function getCookie(name) {
   const value = `; ${document.cookie}`;
@@ -12,9 +13,11 @@ loginBtn.addEventListener("click", () => {
   const password = document.querySelector(".password");
 
   if (!name.value) {
+    hideTable();
     alert("Please enter login name");
     return;
   } else if (!password.value) {
+    hideTable();
     alert("Please enter password");
     return;
   }
@@ -56,9 +59,9 @@ async function getLoginAccess(obj) {
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify(obj),
   });
-  response = await response.json();
-  if (response.status === 401) {
-    alert("error");
+
+  if (!response.ok) {
+    hideTable();
   } else {
     renderContacts();
   }
@@ -72,30 +75,15 @@ async function createContact(name, phone) {
   });
 }
 
+function hideTable() {
+  table.style.visibility = "hidden";
+}
+
 async function renderContacts() {
+  table.style.visibility = "visible";
   let response = await fetch("/contacts", {
     method: "GET",
     headers: { "Content-Type": "application/json" },
   });
   let { contacts } = await response.json();
-
-  // const contacts = json.contacts;
-  // const ul = document.querySelector("ul");
-  // ul.innerHTML = null;
-
-  // for (let el of contacts) {
-  //   const li = document.createElement("li");
-  //   // li.innerHTML = `<h3>${el.title}</h3>
-  //   //       <h4>${el.price}</h4>`;
-
-  //   const h3 = document.createElement("h3");
-  //   const h4 = document.createElement("h4");
-
-  //   h3.textContent = el.title;
-  //   h4.textContent = el.price;
-
-  //   li.append(h3, h4);
-
-  //   ul.append(li);
-  // }
 }
